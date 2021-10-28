@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using Server;
+using Shared;
 
 namespace Server
 {
@@ -10,12 +11,18 @@ namespace Server
         static void Main(string[] args)
         {
 
+            Config conf = ConfigCreate.Create();
+            IMessageRepository messageRepository = new MessageDatabaseRepository();
+
+
             Server server = new Server("localhost",9000);
             try
             {
                 foreach (string data in server.Receive())
                 {
-                    Console.WriteLine(data);
+                    messageRepository.Add(data);
+                    Console.WriteLine(String.Format("Saved {0} to database", data));
+
 
                 }
             }catch(Exception e)
