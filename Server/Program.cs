@@ -11,16 +11,23 @@ namespace Server
         {
 
             Server server = new Server("localhost",9000);
-
-            foreach(string data in server.Receive())
+            try
             {
-                Console.WriteLine(data);
+                foreach (string data in server.Receive())
+                {
+                    Console.WriteLine(data);
+
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.ToString());
 
             }
 
 
 
 
+            
 
           //  Config conf = ConfigCreate.Create();
 
