@@ -15,7 +15,7 @@ namespace Server
             IMessageRepository messageRepository = new MessageDatabaseRepository();
 
 
-            Server server = new Server("localhost",9000);
+            Server server = new Server(conf.Address, conf.Port);
             try
             {
                 foreach (string data in server.Receive())
