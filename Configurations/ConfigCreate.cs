@@ -23,7 +23,7 @@ namespace Configurations
         public static Config Create()
         {
 
-            config.Bind("ConnectionStrings", configObject);
+            config.Bind("Config", configObject);
 
             return configObject;
 
