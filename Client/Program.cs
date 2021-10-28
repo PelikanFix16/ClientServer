@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Configurations;
+using Shared;
+using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -10,8 +12,11 @@ namespace Client
         static void Main(string[] args)
         {
 
+            Config config = ConfigCreate.Create();
+            
+            Client client = new Client(config.Address, config.Port);
+            IMessageRepository messageRepository = new MessageFileRepository();
 
-            Client client = new Client("localhost", 9000);
 
             while (true)
             {
@@ -21,6 +26,9 @@ namespace Client
                 Console.Write("Received: ");
                 string received = client.Receive();
                 Console.WriteLine(received);
+                messageRepository.Add(received);
+
+
 
             }
 
