@@ -31,6 +31,8 @@ Inside **Configurations** directory is **appsettings.json**
 
 All migrations files are created just trigger migrations inside **Package Manager Console** using: 
 
+(**Make sure default selected project is Models**)
+
     Update-Database
   
   
