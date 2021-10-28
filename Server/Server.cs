@@ -10,6 +10,7 @@ namespace Server
     class Server
     {
         private readonly Socket handler;
+        private readonly byte[] returnMsg = Encoding.ASCII.GetBytes("OK");
 
 
         public Server(string hostName,int port)
@@ -26,7 +27,6 @@ namespace Server
         {
             string data = null;
             byte[] bytes = null;
-            byte[] msg = Encoding.ASCII.GetBytes("OK");
 
 
 
@@ -40,7 +40,7 @@ namespace Server
                 {
                     yield return data;
                     data = null;
-                    handler.Send(msg);
+                    handler.Send(returnMsg);
 
                     
                 }
